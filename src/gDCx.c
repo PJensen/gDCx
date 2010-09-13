@@ -134,7 +134,6 @@ void compressGeneticData(const long aDataSize)
 
 	// The index of the permutation lookup.
 	short int compressionIndex = 0;
-	double pComplete = 0.0;
 
 	// this compression structure will be packed into fp using fwrite.
 	struct compressionFooter footer;
@@ -173,7 +172,6 @@ void compressGeneticData(const long aDataSize)
 				if (compressionIndex >= 0 && compressionIndex < 256) {
 					fwrite(&compressionIndex, sizeof(short int), 1, fp);
 					footer.compressedSize += 1;
-					printf("%g\n", (double)((double)footer.compressedSize) / (aDataSize / 4));
 				}
 				else doError("Genetic permutation not found in lookup table");
 			}
